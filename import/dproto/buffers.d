@@ -73,7 +73,7 @@ struct OptionalBuffer(ulong id, string TypeString, RealType, bool isDeprecated=f
 			raw = val;
 			return this;
 		}
-		deprecated ref ValueType opGet() @property {
+		deprecated ref inout(ValueType) opGet() @property inout {
 			return raw;
 		}
 	} else {
@@ -82,7 +82,7 @@ struct OptionalBuffer(ulong id, string TypeString, RealType, bool isDeprecated=f
 			raw = val;
 			return this;
 		}
-		ref ValueType opGet() @property {
+		ref inout(ValueType) opGet() @property inout {
 			return raw;
 		}
 	}
@@ -171,11 +171,11 @@ struct RequiredBuffer(ulong id, string TypeString, RealType, bool isDeprecated=f
 	}
 
 	static if(isDeprecated) {
-		deprecated ref ValueType opGet() @property {
+		deprecated ref inout(ValueType) opGet() @property inout {
 			return raw;
 		}
 	} else {
-		ref ValueType opGet() @property {
+		ref inout(ValueType) opGet() @property inout {
 			return raw;
 		}
 	}
@@ -275,7 +275,7 @@ struct RepeatedBuffer(ulong id, string TypeString, RealType, bool isDeprecated=f
 			raw = val;
 			return this;
 		}
-		deprecated ref ValueType[] opGet() @property {
+		deprecated ref inout(ValueType[]) opGet() @property inout {
 			return raw;
 		}
 	} else {
@@ -283,7 +283,7 @@ struct RepeatedBuffer(ulong id, string TypeString, RealType, bool isDeprecated=f
 			raw = val;
 			return this;
 		}
-		ref ValueType[] opGet() @property {
+		ref inout(ValueType[]) opGet() @property inout {
 			return raw;
 		}
 	}
